@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Пишем код для людей</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- prettier-ignore -->
+    <link rel="stylesheet" href="github.min.css">
+    <!-- <link rel="stylesheet" href="prism.css"> -->
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+    <style>
+      .fira {
+        font-family: 'Fira Code';
+      }
+      .shower {
+        --slide-ratio: calc(16 / 9);
+        --ribbon-size: 40px;
+        --color-yellow: #FFF200
+      }
+
+      .progress::before {
+        background-color: #ed4344;
+      }
+
+      .slide {
+        padding-top: 51px;
+        background-image: url("pictures/fc23-cover.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+      }
+
+      .slide.clear {
+        background-image: none;
+      }
+
+      .slide::after {
+        top: auto;
+        bottom: -10px;
+        left: 30px;
+        right: auto;
+        background: none;
+        color: #000;
+      }
+
+      .slide h2 {
+        color: #000;
+        font-size: 60px;
+      }
+
+      .cover {
+        z-index: 1;
+      }
+
+      .cover.side {
+          width: 45% !important;
+          transform: translate(12%, -50%);
+          height: 100%;
+          object-fit: cover;
+      }
+
+      pre {
+        margin-top: -25px !important;
+      }
+
+      .transparent {
+        background-color: transparent !important;
+      }
+
+      .blank, .blank * {
+        background-color: transparent !important;
+        color: transparent !important;
+      }
+    </style>
+  </head>
+  <body class="shower list">
+    <header class="caption">
+      <h1>Пишем код для людей</h1>
+      <p>Владимир Захаров, Иннотех</p>
+    </header>
+
+    <section class="slide clear" id="cover">
+      <div>
+        <h2>Пишем код для людей</h2>
+        <p>Владимир Захаров, Иннотех</p>
+      </div>
+      <style>
+        #cover {
+          background: url("pictures/fc23-title-2.png") no-repeat center center;
+          background-size: contain;
+        }
+        #cover div {
+          width: 640px;
+          padding-top: 40px;
+          margin-left: -10px;
+        }
+        #cover h2 {
+          margin: 0;
+          font-size: 90px;
+        }
+        #cover p {
+          margin: 18px 0 0;
+          font-size: 34px;
+        }
+      </style>
+    </section>
+
+    <section class="slide">
+      <h2>Владимир Захаров</h2>
+      <ul id="personal-list">
+        <li>фронтлид</li>
+        <li>9 лет в индустрии</li>
+        <li>react, angular, vue, jq</li>
+        <li>фриланс, аутсорс, продукт, платформа</li>
+        <li>от человека-оркестра до лида 4х команд</li>
+      </ul>
+      <img id="personal-photo" class="cover side" src="pictures/me.png" alt="моя фотография">
+      <style>
+        #personal-list li{
+          width: 50%;
+          line-height: 35px;
+          padding-top: 20px;
+        }
+      </style>
+    </section>
+
+    <section class="slide clear">
+      <div class="cover">
+        <!-- <video controls="" width="800" src="pictures/words-and-letters.gif"></video> -->
+      </div>
+      <img class="next" id="gif-demo" src="pictures/words-and-letters.gif">
+      <style>
+        #gif-demo {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 1000px;
+        }
+      </style>
+    </section>
+
+    <!-- <section class="slide clear">
+      <p class="shout">Как</p>
+    </section>
+    <section class="slide clear">
+      <p class="shout">на смоам</p>
+    </section>
+    <section class="slide clear">
+      <p class="shout">длее</p>
+    </section>
+    <section class="slide clear">
+      <p class="shout">наш мзог</p>
+    </section>
+    <section class="slide clear">
+      <p class="shout">сычтевиат</p>
+    </section>
+    <section class="slide clear">
+      <p class="shout">ицрфмаонию?</p>
+    </section> -->
+
+    <section class="slide clear" id="text">
+      <p class="shout">Как на смоам длее наш мзог сычтевиат ицрфмаонию?</p>
+      <style>
+        #text .shout {
+          font-size: 70px !important;
+        }
+      </style>
+    </section>
+
+    <section class="slide">
+      <h2>Мы не на диктанте</h2>
+      <code>на лисной апушки р а с п у с к а ю ц а к о л о к о л ч и к и, незабутки, шыповник рамашки пратягивают к сонцу свои лепески Вылитают из уютных гнёзд птинцы. У зверей взраслеет смена М и д в е ж а т а старше всех. Они р а д и л и с ь в берлоги.</code>
+    </section>
+
+    <section class="slide clear">
+      <pre><code class="no-colors" style="font-size: 20px; line-height: 30px;"><xmp>
+export const List = ({ data, onDeleteFile, policies }: Props) => {
+  const slicedData = useMemo(() => {
+      return data.slice(0, close ? MIN_FILES_NUMBER : data.length);
+  }, [close, data]);
+  const delete = (name: string, uuid: string) => {
+      const fileslist = files.value as Array<File>;
+      if (uuid !== INIT_UUID) {
+          onDeleteFile(uuid);
+      } else {
+          setFiles(fileslist.filter((name) => name.replace(/\.[^.$]+$/, "") !== name));
+      }
+  };
+  return (slicedData?.map((el, index) => (
+    <FileItem data={el} deleteFile={deleteFileHandler} policies={policies}
+    />)
+};
+      </xmp></code></pre>
+      <style>
+        .no-colors > * {
+          color: #000 !important;
+        }
+      </style>
+    </section>
+
+    <section class="slide clear">
+      <pre><code style="font-size: 20px; line-height: 30px;"><xmp>
+export const List = ({ data, onDeleteFile, policies }: Props) => {
+  const slicedData = useMemo(() => {
+      return data.slice(0, close ? MIN_FILES_NUMBER : data.length);
+  }, [close, data]);
+  const delete = (name: string, uuid: string) => {
+      const fileslist = files.value as Array<File>;
+      if (uuid !== INIT_UUID) {
+          onDeleteFile(uuid);
+      } else {
+          setFiles(fileslist.filter((name) => name.replace(/\.[^.$]+$/, "") !== name));
+      }
+  };
+  return (slicedData?.map((el, index) => (
+    <FileItem data={el} deleteFile={deleteFileHandler} policies={policies}
+    />)
+};
+      </xmp></code></pre>
+    </section>
+
+    <!-- <section class="slide">
+      <h2>Мы не на диктанте</h2>
+      <code>на лисной апушки р а с п у с к а ю ц а к о л о к о л ч и к и, незабутки, шыповник рамашки пратягивают к сонцу свои лепески Вылитают из уютных гнёзд птинцы. У зверей взраслеет смена М и д в е ж а т а старше всех. Они р а д и л и с ь в берлоги.</code>
+    </section>
+
+    <section class="slide">
+      <h2>Мы не на диктанте</h2>
+      <code class="hljs"><span class="hljs-keyword">На лисной</span> апушки р а с п у с к а ю ц а к о л о к о л ч и к и, <span class="hljs-title function_">незабутки</span>, шыповник рамашки пратягивают к сонцу свои лепески <span class="hljs-keyword">Вылитают из</span> <span class="hljs-variable constant_">уютных гнёзд</span> птинцы. У зверей взраслеет смена <span class="hljs-variable constant_" style="text-transform: uppercase; font-weight: bold;">М_и_д_в_е_ж_а_т_а</span> старше всех. Они р а д и л и с ь в берлоги.</code>
+    </section> -->
+
+    <section class="slide">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>как мы пишем, читаем, видим код</li>
+        <li class="next">удобный, неудобный и сложный код</li>
+        <li class="next">шаблоны, привычки и паттерны</li>
+        <li class="next">абстракции против костылей</li>
+        <li class="next">как стать профессионалом</li>
+        <li class="next">... и как потом с этим жить</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Код для компьютера</h2>
+      <ul>
+        <li>умеют писать все</li>
+        <li class="next">порог входа в профессию</li>
+        <li class="next">javascript прощает всё</li>
+        <li class="next">не баг, а фича</li>
+        <!-- <li class="next"><mark>что с качеством?</mark></li> -->
+      </ul>
+    </section>
+
+    <section class="slide clear">
+      <img class="place top" src="pictures/lebowski.jpeg" alt="" />
+    </section>
+
+    <section class="slide">
+      <h2>Качество продукта</h2>
+      <ul>
+        <li>мало багов</li>
+        <li class="next">стабильная функциональность</li>
+        <li class="next">отзывчивость</li>
+        <li class="next"><mark>удобство и надёжность</mark></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shrink" style="font-size: 80px;">код = параллельный продукт</h2>
+    </section>
+
+    <!-- <section class="slide">
+      <h2>Код = параллельный продукт</h2>
+      <ul>
+        <li>потребители - разработчики</li>
+        <li class="next">кодовая база - гипертекст</li>
+        <li class="next">фреймворк - интерфейс</li>
+        <li class="next">используем собственные инструменты</li>
+        <li class="next">ежедневный опыт работы с кодом</li>
+        <li class="next">читаем, обдумаваем, пишем</li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>Качественный продукт</h2>
+      <ul>
+        <li>удовольствие от использования</li>
+        <li class="next">рекомендации друзьям</li>
+        <li class="next">лояльность потребителей</li>
+      </ul>
+    </section> -->
+
+    <section class="slide">
+      <h2>Качественный код-продукт</h2>
+      <ul>
+        <li>удовольствие от использования</li>
+        <li>рекомендации друзьям</li>
+        <li>лояльность потребителей</li>
+        <li class="next">хорошая зарплата</li>
+        <li class="next">техническое развитие</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Писать код для людей</h2>
+      <ul>
+        <li>заботиться о людях</li>
+        <li class="next"><mark>удобство</mark> чтения</li>
+        <li class="next"><mark>простота</mark> мышления</li>
+        <li class="next"><mark>надёжность</mark> изменений</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Писать код для людей</h2>
+      <ul>
+        <li>заботиться о людях</li>
+        <li><mark>удобство</mark> чтения</li>
+        <li><mark>простота</mark> мышления</li>
+        <li><s>надёжность изменений</s> - в другой раз</span></li>
+      </ul>
+    </section>
+
+    <!-- <section class="slide">
+      <h2>Писать код для людей</h2>
+      <ul>
+        <li>заботиться о людях</li>
+        <li><mark class="transparent">удобство</mark> чтения <mark class="next">скорость и логичность</mark></li>
+        <li><mark class="transparent">простота</mark> мышления <mark class="next">шаблонность и stateless</mark></li>
+        <li><mark class="transparent">надёжность</mark> изменений <span class="next">- в другой раз</span></li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>Удобство кода</h2>
+      <ul>
+        <li class="next">80% времени чтение</li>
+        <li class="next">всегда чужой код</li>
+        <li class="next">хочется читать легко и понимать быстро</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <p class="shout" style="font-size: 60px;">"для людей" = удобный для чтения и мышления другими людьми</p>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>Удобно и просто - это как?</h2>
+      <ul>
+        <li class="next">прозрачность</li>
+        <li class="next">последовательность</li>
+        <li class="next">логичность</li>
+        <li class="next">шаблонность</li>
+        <li class="next">безопасность</li>
+        <li class="next">бесконтекстность</li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>Как мы учились писать код?</h2>
+      <ul>
+        <li class="next">синтаксис и конструкции</li>
+        <li class="next">приёмы и алгоритмы</li>
+        <li class="next">решение типовых задач</li>
+        <li class="next">StackOverflow</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Как мы учились читать код?</h2>
+      <ul>
+        <li class="next">сверху-вниз</li>
+        <li class="next">никак</li>
+        <li class="next">как-то само получилось</li>
+      </ul>
+    </section> -->
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+        <span class="blank">
+          <mark>?????</mark> ->
+        </span>
+        читаем -> пишем
+      </p>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+          <mark class="transparent">?????</mark> -> читаем -> пишем
+      </p>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+        <mark>видим</mark> -> читаем -> пишем
+      </p>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout fira" style="font-size: 70px;">"Восприятие в шахматах", Саймон</h2>
+    </section>
+
+    <section class="slide clear">
+      <img class="place center cover" src="pictures/position.png" alt="" />
+      <img class="place center cover next" src="pictures/blank.png" alt="" />
+      <img class="place center cover next" src="pictures/position.png" alt="" />
+    </section>
+
+    <section class="slide clear">
+      <img class="place center cover" width="1000px" src="pictures/chunk-by-chunk.png" alt="" />
+    </section>
+
+    <!-- <section class="slide">
+      <h2>"Восприятие в шахматах", Саймон</h2>
+      <ul>
+        <li>изучение репрезентации</li>
+        <li class="next">демонстрация позиции на 15 секунд</li>
+        <li class="next">предложение повторить позицию на пустой доске</li>
+        <li class="next">при затруднении позиция демонстрируется ещё раз</li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>"Восприятие в шахматах", Саймон</h2>
+      <ul>
+        <li>сравнение игроков разного уровня</li>
+        <li class="next">изучение <mark>репрезентации</mark></li>
+        <li class="next">набор знаний, активирующийся в ходе решения задачи</li>
+        <li class="next">представленность, мысленная модель происходящего, восприятие</li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>"Восприятие в шахматах", Саймон</h2>
+      <ul>
+        <li>все испытуемые объединяют фигуры в чанки</li>
+        <li class="next">чанки - осмысленные наборы фигур</li>
+        <li class="next">позиция = набор чанков</li>
+        <li class="next">для некоторых позиций у новичков не было чанков</li>
+        <li class="next">пофигурное воспроизведение</li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide">
+      <img class="place center cover" width="500" src="pictures/chunk.jpg" alt="" />
+      <div class="spotlight next" id="chess-chunk-1"></div>
+      <div class="spotlight next" id="chess-chunk-2"></div>
+      <style>
+        #chess-chunk-1 {
+          --spotlight-top: -45px;
+          --spotlight-left: -140px;
+          --spotlight-opacity: 50%;
+          --spotlight-size: 220px;
+          z-index: 1;
+        }
+        #chess-chunk-2 {
+          --spotlight-top: 105px;
+          --spotlight-left: 140px;
+          --spotlight-opacity: 50%;
+          --spotlight-size: 220px;
+          z-index: 1;
+        }
+      </style>
+    </section> -->
+
+    <section class="slide">
+      <h2>"Восприятие в шахматах", Саймон</h2>
+      <ul>
+        <li>все испытуемые объединяют фигуры в чанки</li>
+        <li class="next">новичок - <mark>10</mark> чанков</li>
+        <li class="next">продвинутый - <mark>1000</mark> чанков</li>
+        <li class="next">профи - около <mark>50 000</mark> по мат. модели</li>
+        <li class="next"><mark>новички и эксперты видят принципиально разные доски</mark></li>
+      </ul>
+    </section>
+
+    <section class="slide clear">
+      <!-- <h2>"Восприятие в шахматах", Саймон</h2>
+      <ul>
+        <li>мгновенная поверхностная оценка ситуации</li>
+        <li class="next">новочки вспоминают расположение фигур</li>
+        <li class="next">продвинутые объясняют, что происходит</li>
+        <li class="next">профи - "мат в два хода чёрным"</li>
+      </ul> -->
+      <img class="place center cover" src="pictures/chess-eye.png" alt="" />
+      <div class="circle" style="top: 300px; left: 220px; --radius: 200px"></div>
+      <div class="circle" style="top: 190px; left: 390px; --radius: 100px"></div>
+      <div class="circle" style="top: 90px; left: 290px; --radius: 100px"></div>
+      <div class="circle" style="top: 250px; left: 635px; width: 450px !important; height: 100px; transform: rotate(115deg);"></div>
+      <style>
+        .circle {
+          z-index: 1;
+          position: absolute;
+          width: var(--radius, 50px);
+          height: var(--radius, 50px);
+          background-color:var(--color-yellow);
+          opacity: .7;
+          border-radius: 50%;
+          background-blend-mode: multiply;
+          mix-blend-mode: multiply;
+        }
+      </style>
+    </section>
+
+    <section class="slide">
+      <h2>Симультанное восприятие</h2>
+      <ul>
+        <li>правополушарное, творческое</li>
+        <li class="next">единомоментное восприятие информации </li>
+        <li class="next">мышление единицами смысла - образы, чанки, паттерны</li>
+        <li class="next">мгновенное, "просто знаю / чувствую", интуиция</li>
+        <li class="next">развивается через насмотренность</li>
+        <!-- <li class="next"><mark>способствовать симультанному восприятию = писать код для людей</mark></li> -->
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Анализ профессионального мышления</h2>
+      <ul>
+        <li>методика работает для разных проф. областей</li>
+        <li class="next">чанк - «единица организации» профессионального опыта</li>
+        <li class="next">рост количества чанков = рост экспетизы </li>
+      </ul>
+    </section>
+
+    <section id="blurred-code" class="slide">
+      <div class="code-blurred">
+      <pre><code class="no-highlight">
+<mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
+  <mark>//...</mark>
+}
+      </code></pre>
+      </div>
+        <style>
+          #blurred-code code {
+            font-size: 50px !important;
+          }
+          #blurred-code mark {
+            color: transparent !important;
+          }
+        </style>
+    </section>
+
+    <section id="unblurred-code" class="slide">
+      <div class="code-blurred">
+      <pre><code class="no-highlight">
+<mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
+  <mark>//...</mark>
+}
+      </code></pre>
+      </div>
+        <style>
+          #unblurred-code code {
+            font-size: 50px !important;
+          }
+        </style>
+    </section>
+
+    <section id="blurred-page" class="slide">
+      <div class="code-blurred">
+      <pre><code class="no-highlight">
+        <mark class="important">function</mark>  <mark>doSomething</mark> {
+            <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
+              <mark>//...</mark>
+            }
+
+            <mark class="important">if</mark> ( <mark>list.length</mark> ) {
+              <mark class="important">return "full"</mark>
+            }
+
+            <mark class="important">return "empty"</mark>
+        }
+      </code></pre>
+      </div>
+        <style>
+          #blurred-page code {
+            font-size: 20px !important;
+          }
+          #blurred-page mark {
+            color: transparent !important;
+          }
+        </style>
+    </section>
+
+    <section id="unblurred-page" class="slide">
+      <div class="code-blurred">
+      <pre><code class="no-highlight">
+        <mark class="important">function</mark>  <mark>doSomething</mark> {
+            <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
+              <mark>//...</mark>
+            }
+
+            <mark class="important">if</mark> ( <mark>list.length</mark> ) {
+              <mark class="important">return "full"</mark>
+            }
+
+            <mark class="important">return "empty"</mark>
+        }
+      </code></pre>
+      </div>
+        <style>
+          #unblurred-page code {
+            font-size: 20px !important;
+          }
+        </style>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover" src="pictures/the-matrix.jpeg" alt="" />
+    </section>
+
+    <section class="slide">
+      <h2>Чанки Саймона в разработке</h2>
+      <ul>
+        <li>подсветка синтаксиса</li>
+        <li class="next">форматирование</li>
+        <li class="next">ключевые слова</li>
+        <li class="next">расположение</li>
+        <li class="next"><mark><b>узнаваемые характерные блоки = чанки</b></mark></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Как мы мешаем</h2>
+      <ul>
+        <li class="next">несколько функций в одном файле</li>
+        <li class="next">смешанное форматирование</li>
+        <li class="next">необычная цветовая схема</li>
+        <li class="next">хаотичное расположение</li>
+        <li class="next">писать код для людей = <mark>способствовать симультанному восприятию</mark></li>
+      </ul>
+    </section>
+<!--
+    <section class="slide">
+      <h2>Как мы мешаем симультанному восприятию</h2>
+      <ul>
+        <li>пример</li>
+      </ul>
+    </section> -->
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+        видим -> <mark>читаем</mark> -> пишем
+      </p>
+    </section>
+
+    <section class="slide">
+      <h2>Суксессивное восприятие</h2>
+      <ul>
+        <li class="next">левополушарное, логическое</li>
+        <li class="next">медленное и последовательное</li>
+        <li class="next">анализ важной или новой информации</li>
+        <li class="next">алгоритмическая секция на собеседовании</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Сложность кода</h2>
+      <ul>
+        <li>необходимая и непреднамеренная</li>
+        <li class="next">цикломатическая - ветвления</li>
+        <li class="next">когнитивная - прерывания</li>
+      </ul>
+    </section>
+
+    <section class="slide" id="cyclomatic">
+      <pre><code class="no-highlight" style="font-size: 40px; line-height: 70px;"><mark class="important">function doSomething()</mark> {
+    <mark class="important">while</mark> {
+      <mark class="important">if (...)</mark> {
+        <mark class="important">for (...)</mark> {
+          <mark class="important">if (...)</mark> {
+            <mark class="important">break;</mark>
+          }
+      </code></pre>
+      <style>
+        #cyclomatic mark {
+          color: transparent !important;
+        }
+      </style>
+    </section>
+
+    <section class="slide clear">
+      <img class="place top" src="pictures/bezdna-ada-bottichelli.jpeg" alt="" />
+    </section>
+
+    <section class="slide">
+      <pre><code style="font-size: 40px; line-height: 70px;">function doSomething() {
+    while (...) {
+      if (...) {
+        for (...) {
+          if (...) {
+            break;
+          }
+      </code></pre>
+    </section>
+
+
+
+    <section class="slide">
+      <h2>Переусложнённый код</h2>
+      <ul>
+        <li>удержание разветвлённого контекста</li>
+        <li class="next">пустые затраты когнитивных ресурсов</li>
+        <li class="next">очень медленно</li>
+        <li class="next">наращивание костылей</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+        видим -> читаем -> <mark>пишем</mark>
+      </p>
+    </section>
+
+    <section class="slide">
+      <h2>Как писать код для людей?</h2>
+      <ul>
+        <li>главный принцип - <mark>считывать, а не вчитываться</mark></li>
+        <li class="next">наша задача перейти к левополушарному логическому мышлению как можно позже</li>
+        <li class="next">чанки - шаблонные решения</li>
+        <li class="next">не можете опознать чанк - есть хорошие новости</li>
+        <li class="next"><mark>дизайн-паттерны и принципы</mark></li>
+      </ul>
+    </section>
+
+    <!-- <section class="slide">
+      <h2>Паттерны !== ООП</h2>
+      <ul>
+        <li>паттерн - устойчивый, шаблонный способ решения задачи</li>
+        <li class="next">паттерны повсюду</li>
+        <li class="next">singleton и fabric - паттерны</li>
+        <li class="next">SPA и SSR - паттерны</li>
+        <li class="next">фреймворк - набор паттернов</li>
+      </ul>
+    </section> -->
+
+    <section class="slide clear">
+      <img class="place center" width="1100" style="object-fit: contain;" src="pictures/hangover.jpg" alt="" />
+      <p class="buzzword fira next" style="scale: 14; top: 130px; left: 135px;">FP</p>
+      <p class="buzzword fira next" style="scale: 7; top: 230px; left: 835px;">ООП</p>
+      <p class="buzzword fira next" style="scale: 10; top: 80px; left: 335px;">Rx</p>
+      <p class="buzzword fira next" style="scale: 8; top: 360px; left: 455px;">SINGLETON</p>
+      <p class="buzzword fira next" style="scale: 8; top: 240px; left: 305px;">DRY</p>
+      <p class="buzzword fira next" style="scale: 9; top: 420px; left: 135px;">KISS</p>
+      <p class="buzzword fira next" style="scale: 4; top: 300px; left: 55px;">GRASP</p>
+      <p class="buzzword fira next" style="scale: 6; top: 100px; left: 735px;">render props</p>
+      <p class="buzzword fira next" style="scale: 5; top: 500px; left: 55px;">LOL</p>
+      <p class="buzzword fira next" style="scale: 4; top: 500px; left: 300px;">KEK</p>
+      <p class="buzzword fira next" style="scale: 20; top: 350px; left: 850px;">DI</p></div>
+      <p class="buzzword fira next" style="scale: 15; top: 500px; left: 635px;">SOLID</p>
+
+      <style>
+        .buzzword {
+          z-index: 1;
+          position: absolute;
+          font-size: 10px;
+          color: white;
+          opacity: .9;
+          text-shadow: 0 0 1px white, 0 0 1px white;
+        }
+      </style>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shrink" style="font-size: 100px;">Паттерны !== ООП</h2>
+    </section>
+
+    <section class="slide">
+      <h2>SOLID !== ООП</h2>
+      <ul>
+        <li>S - SRP - функция должна делать что-то одно</li>
+        <li class="next">I - принцип разделения интерфейсов - количество props должно быть ограничено только необходимыми</li>
+        <li class="next">
+          <a href="https://youtu.be/qmtXJwX5gyw"><mark>ASEPTIC - Иван Малюгин</mark></a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover" src="pictures/malugin.png" alt="" />
+    </section>
+
+    <!-- <section class="slide">
+      <h2>Принципы ООП<span class="fira">!==</span> ООП</h2>
+      <ul>
+        <li>полиморфизм<span class="next">взаимозаменяемость при соблюдении контракта</span></li>
+        <li class="next">инкапсуляция - скрытие внутреннего устройства</li>
+        <li class="next">наследование - про отделение общего от частного</li>
+      </ul>
+    </section> -->
+
+    <section class="slide">
+      <h2>Паттерны и шаблонные решения</h2>
+      <ul>
+        <li>когнитивно дёшевы</li>
+        <li class="next">распознаются симультанно</li>
+        <li class="next">быстро внедряются</li>
+        <li class="next">обеспечивают "молчаливую" коммуникация</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira">dispatch</p>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira">{children}</p>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira">rxjs</p>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 100px;">() => () => {}</p>
+    </section>
+
+    <section class="slide">
+      <p class="shout fira" style="font-size: 100px;">(｡)(｡)</p>
+    </section>
+
+    <section class="slide blank">
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shrink fira" style="font-size: 100px;">Внедрять паттерн <nobr>или ставить костыль?</nobr></h2>
+    </section>
+
+    <section class="slide">
+      <h2>Паттерны против ad hoc</h2>
+      <ul>
+        <li>код для людей - для каких людей?</li>
+        <li class="next">уровень абстрактности - компромисс с экспертизой команды</li>
+        <li class="next">зоопарк паттернов - всегда плохо</li>
+        <li class="next">паттерн решает задачу, а не порождает</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Инструменты и рекомендации</h2>
+      <ul>
+        <li>SonarQube</li>
+        <li class="next">ESlint</li>
+        <li class="next">Prettier</li>
+        <li class="next">насмотренность и чтение исходников</li>
+        <li class="next">теория дизайна и рефакторинг refactoring.guru/</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Лирическая минутка</h2>
+      <ul>
+        <li>программист учится всю жизнь</li>
+        <li class="next">количество опознаваемых чанков, шаблонов</li>
+        <li class="next">мозг эксперта распознаёт огромное количество образов</li>
+        <li class="next">эксперт действует интуитивно, на чутье, как чувствует</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shrink fira" style="font-size: 100px;">программирование <nobr>стало чувством</nobr><br></h2>
+    </section>
+
+    <!-- <section class="slide">
+      <h2>Сегодня я многое понял</h2>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <div class="cover side" style="margin-top: 150px; margin-left: 50px;">
+        <img width="350" id="personal-photo" class="" src="pictures/stan.png" alt="моя фотография">
+      </div>
+    </section> -->
+
+<!--
+    <section id="code-page" class="slide">
+      <div class="code-blurred">
+      <pre><code>
+        <mark class="important">function</mark>  <mark>doSomething</mark> {
+            <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
+              <mark>//...</mark>
+            }
+
+            <mark class="important">if</mark> ( <mark>list.length</mark> ) {
+              <mark class="important">return "full"</mark>
+            }
+
+            <mark class="important">return "empty"</mark>
+        }
+      </code></pre>
+      </div>
+        <style>
+          #code-page code {
+            font-size: 20px !important;
+          }
+        </style>
+    </section> -->
+
+    <!-- <section class="slide">
+      <p class="shout" style="font-size: 80px; line-height: 90px;">Мы не читаем код<br>Мы его пролистываем</p>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>Скорочтение</h2>
+    </section> -->
+
+    <!-- <section class="slide">
+      <h2>Суксессивное восприятие</h2>
+      <ul>
+        <li class="next">последовательное восприятие</li>
+        <li class="next">левополушарное, логическое</li>
+        <li class="next">анализ важной информации</li>
+        <li class="next">медленное</li>
+      </ul>
+    </section> -->
+
+    <!-- <section class="slide" id="text">
+      <p class="shout">Императивное и декларативное программирование</p>
+      <style>
+        #text .shout {
+          font-size: 70px !important;
+        }
+      </style>
+    </section> -->
+
+
+
+    <section class="slide clear" id="last-slide">
+      <h2>Голосуйте за мой доклад</h2>
+      <p>
+        Владимир Захаров<br />
+        ГК Иннотех<br />
+        @vzkhrv<br />
+      </p>
+      <img src="pictures/qr.jpg" alt="" />
+      <style>
+        #last-slide {
+          background: url("pictures/fc23-title-2.png") no-repeat center center;
+          background-size: contain;
+        }
+        #last-slide h2 {
+          font-size: 62px;
+          width: 450px;
+          margin-top: 40px;
+        }
+        #last-slide p {
+          line-height: initial;
+        }
+        #last-slide img {
+          position: absolute;
+          right: 40px;
+          top: 40px;
+          width: 400px;
+        }
+      </style>
+    </section>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.js"></script>
+    <script src="highlight.min.js"></script>
+    <!-- <script src="prism.js"></script> -->
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
