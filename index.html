@@ -1,16 +1,72 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <title>Пишем код для людей</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- prettier-ignore -->
-    <link rel="stylesheet" href="github.min.css">
-    <!-- <link rel="stylesheet" href="prism.css"> -->
-    <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css">
-    <style>
+<head>
+<title>Пишем код для людей</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- prettier-ignore -->
+<link rel="stylesheet" href="github.min.css">
+<!-- <link rel="stylesheet" href="prism.css"> -->
+<link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css">
+<style>
+      @font-face {
+          font-family: 'FiraCode-Bold';
+          src: url('fonts/FiraCode-Regular.ttf');
+      }
+      @font-face {
+          font-family: 'TTTravels-Black';
+          src: url('fonts/TTTravels-Black.ttf');
+      }
+      @font-face {
+          font-family: 'TTTravels-DemiBold';
+          src: url('fonts/TTTravels-DemiBold.ttf');
+      }
+      @font-face {
+          font-family: 'TTTravels-Regular';
+          src: url('fonts/TTTravels-Regular.ttf');
+      }
+
+      section {
+        font-family: 'TTTravels-Regular' !important;
+      }
+
+      h1 {
+        font-family: 'TTTravels-Black' !important;
+        font-size: 50px !important;
+      }
+
+      h2 {
+        font-family: 'TTTravels-DemiBold' !important;
+        font-size: 50px !important;
+      }
+
+      p, li {
+        font-size: 25px;
+      }
+
+      li.no-bullet {
+        list-style: none;
+      }
+
+      .slide ul > li.no-bullet:lang(ru)::before {
+        content: '';
+      }
+
+      br {
+        content: "";
+        display: block;
+        margin: 0;
+        line-height: 0;
+        font-size: 0;
+      }
+      .shout {
+        font-family: 'TTTravels-DemiBold' !important;
+        font-size: 60px !important;
+      }
+
       .fira {
-        font-family: 'Fira Code';
+        font-family: 'FiraCode-Bold' !important;
+        font-weight: bold;
       }
       .shower {
         --slide-ratio: calc(16 / 9);
@@ -34,6 +90,24 @@
         background-image: none;
       }
 
+      .slide.blackout {
+        background-color: black;
+        background-image: none;
+      }
+
+      .slide.blackout * {
+        color: white;
+      }
+
+      .slide.shout {
+        background-color: var(--color-yellow);
+        background-image: none;
+      }
+
+      .slide.shout mark {
+        background-color: white;
+      }
+
       .slide::after {
         top: auto;
         bottom: -10px;
@@ -45,7 +119,7 @@
 
       .slide h2 {
         color: #000;
-        font-size: 60px;
+        font-size: 45px !important;
       }
 
       .cover {
@@ -71,75 +145,79 @@
         background-color: transparent !important;
         color: transparent !important;
       }
+
+      .procs-cons {
+        display: flex;
+        gap: 200px;
+      }
     </style>
-  </head>
-  <body class="shower list">
-    <header class="caption">
-      <h1>Пишем код для людей</h1>
-      <p>Владимир Захаров, Иннотех</p>
-    </header>
+</head>
+<body class="shower list">
+<header class="caption">
+  <h1>Пишем код для людей</h1>
+  <p>Владимир Захаров</p>
+</header>
 
-    <section class="slide clear" id="cover">
-      <div>
-        <h2>Пишем код для людей</h2>
-        <p>Владимир Захаров, Иннотех</p>
-      </div>
-      <style>
-        #cover {
-          background: url("pictures/fc23-title-2.png") no-repeat center center;
-          background-size: contain;
-        }
-        #cover div {
-          width: 640px;
-          padding-top: 40px;
-          margin-left: -10px;
-        }
-        #cover h2 {
-          margin: 0;
-          font-size: 90px;
-        }
-        #cover p {
-          margin: 18px 0 0;
-          font-size: 34px;
-        }
-      </style>
-    </section>
+<section class="slide clear" id="cover">
+<div>
+  <h1>Пишем код для людей</h1>
+  <p>Владимир Захаров</p>
+</div>
+  <style>
+    #cover {
+      background: url("pictures/fc23-title-2.png") no-repeat center center;
+      background-size: contain;
+    }
+    #cover div {
+      width: 640px;
+      padding-top: 40px;
+      margin-left: -10px;
+    }
+    #cover h2 {
+      margin: 0;
+      font-size: 90px;
+    }
+    #cover p {
+      margin: 18px 0 0;
+      font-size: 34px;
+    }
+  </style>
+</section>
 
-    <section class="slide">
-      <h2>Владимир Захаров</h2>
-      <ul id="personal-list">
-        <li>фронтлид</li>
-        <li>9 лет в индустрии</li>
-        <li>react, angular, vue, jq</li>
-        <li>фриланс, аутсорс, продукт, платформа</li>
-        <li>от человека-оркестра до лида 4х команд</li>
-      </ul>
-      <img id="personal-photo" class="cover side" src="pictures/me.png" alt="моя фотография">
-      <style>
-        #personal-list li{
-          width: 50%;
-          line-height: 35px;
-          padding-top: 20px;
-        }
-      </style>
-    </section>
+<section class="slide">
+  <h2>Владимир Захаров</h2>
+  <ul id="personal-list">
+    <li>фронтлид</li>
+    <li>9&nbsp;лет в&nbsp;индустрии</li>
+    <li>react, angular, vue, jq</li>
+    <li>фриланс, аутсорс, продукт, платформа</li>
+    <li>от&nbsp;человека-оркестра до&nbsp;лида 4х&nbsp;команд</li>
+  </ul>
+  <img id="personal-photo" class="cover side" src="pictures/me.png" alt="моя фотография">
+  <style>
+    #personal-list li{
+      width: 50%;
+      line-height: 35px;
+      padding-top: 20px;
+    }
+  </style>
+</section>
 
-    <section class="slide clear">
-      <div class="cover">
-        <!-- <video controls="" width="800" src="pictures/words-and-letters.gif"></video> -->
-      </div>
-      <img class="next" id="gif-demo" src="pictures/words-and-letters.gif">
-      <style>
-        #gif-demo {
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          width: 1000px;
-        }
-      </style>
-    </section>
+<section class="slide clear">
+<div class="cover">
+</div>
+  <img class="next" id="gif-demo" src="pictures/words-and-letters.gif">
+  <style>
+    #gif-demo {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 1000px;
+    }
+  </style>
+</section>
 
-    <!-- <section class="slide clear">
+<!-- <section class="slide clear">
       <p class="shout">Как</p>
     </section>
     <section class="slide clear">
@@ -158,22 +236,22 @@
       <p class="shout">ицрфмаонию?</p>
     </section> -->
 
-    <section class="slide clear" id="text">
-      <p class="shout">Как на смоам длее наш мзог сычтевиат ицрфмаонию?</p>
-      <style>
-        #text .shout {
-          font-size: 70px !important;
-        }
-      </style>
-    </section>
+<section class="slide clear" id="text">
+  <p class="shout">Как на&nbsp;смоам длее наш мзог сычтевиат ицрфмаонию?</p>
+  <style>
+    #text .shout {
+      font-size: 70px !important;
+    }
+  </style>
+</section>
 
-    <section class="slide">
-      <h2>Мы не на диктанте</h2>
-      <code>на лисной апушки р а с п у с к а ю ц а к о л о к о л ч и к и, незабутки, шыповник рамашки пратягивают к сонцу свои лепески Вылитают из уютных гнёзд птинцы. У зверей взраслеет смена М и д в е ж а т а старше всех. Они р а д и л и с ь в берлоги.</code>
-    </section>
+<section class="slide">
+<h2>Мы&nbsp;не&nbsp;на&nbsp;диктанте</h2>
+<code>на лисной апушки р а с п у с к а ю ц а к о л о к о л ч и к и, незабутки, шыповник рамашки пратягивают к сонцу свои лепески Вылитают из уютных гнёзд птинцы. У зверей взраслеет смена М и д в е ж а т а старше всех. Они р а д и л и с ь в берлоги.</code>
+</section>
 
-    <section class="slide clear">
-      <pre><code class="no-colors" style="font-size: 20px; line-height: 30px;"><xmp>
+<section class="slide clear">
+<pre><code class="no-colors" style="font-size: 20px; line-height: 30px;"><xmp>
 export const List = ({ data, onDeleteFile, policies }: Props) => {
   const slicedData = useMemo(() => {
       return data.slice(0, close ? MIN_FILES_NUMBER : data.length);
@@ -191,15 +269,15 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
     />)
 };
       </xmp></code></pre>
-      <style>
+<style>
         .no-colors > * {
           color: #000 !important;
         }
       </style>
-    </section>
+</section>
 
-    <section class="slide clear">
-      <pre><code style="font-size: 20px; line-height: 30px;"><xmp>
+<section class="slide clear">
+<pre><code style="font-size: 20px; line-height: 30px;"><xmp>
 export const List = ({ data, onDeleteFile, policies }: Props) => {
   const slicedData = useMemo(() => {
       return data.slice(0, close ? MIN_FILES_NUMBER : data.length);
@@ -217,112 +295,93 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
     />)
 };
       </xmp></code></pre>
-    </section>
+</section>
 
-    <!-- <section class="slide">
-      <h2>Мы не на диктанте</h2>
-      <code>на лисной апушки р а с п у с к а ю ц а к о л о к о л ч и к и, незабутки, шыповник рамашки пратягивают к сонцу свои лепески Вылитают из уютных гнёзд птинцы. У зверей взраслеет смена М и д в е ж а т а старше всех. Они р а д и л и с ь в берлоги.</code>
-    </section>
+<section class="slide">
+  <h2>Roadmap</h2>
+  <ul>
+    <li>как мы видим, читаем, пишем код</li>
+    <li class="next">удобный, неудобный и&nbsp;сложный код</li>
+    <li class="next">шаблоны, привычки, &nbsp;паттерны</li>
+    <li class="next">абстракции против костылей</li>
+    <li class="next">как стать профессионалом</li>
+    <li class="next">... и&nbsp;как потом с&nbsp;этим жить</li>
+  </ul>
+</section>
 
-    <section class="slide">
-      <h2>Мы не на диктанте</h2>
-      <code class="hljs"><span class="hljs-keyword">На лисной</span> апушки р а с п у с к а ю ц а к о л о к о л ч и к и, <span class="hljs-title function_">незабутки</span>, шыповник рамашки пратягивают к сонцу свои лепески <span class="hljs-keyword">Вылитают из</span> <span class="hljs-variable constant_">уютных гнёзд</span> птинцы. У зверей взраслеет смена <span class="hljs-variable constant_" style="text-transform: uppercase; font-weight: bold;">М_и_д_в_е_ж_а_т_а</span> старше всех. Они р а д и л и с ь в берлоги.</code>
-    </section> -->
+<section class="slide">
+<h2>Код для компьютера</h2>
+<ul>
+<li>умеют писать все</li>
+<li class="next">порог входа в&nbsp;профессию</li>
+<li class="next">javascript прощает всё</li>
+<li class="next">не&nbsp;баг, а&nbsp;фича</li>
+</ul>
+</section>
 
-    <section class="slide">
-      <h2>Roadmap</h2>
-      <ul>
-        <li>как мы пишем, читаем, видим код</li>
-        <li class="next">удобный, неудобный и сложный код</li>
-        <li class="next">шаблоны, привычки и паттерны</li>
-        <li class="next">абстракции против костылей</li>
-        <li class="next">как стать профессионалом</li>
-        <li class="next">... и как потом с этим жить</li>
-      </ul>
-    </section>
+<section class="slide clear">
+  <img class="place top" src="pictures/lebowski.jpeg" alt="" />
+  <h2 class="shout" id="lebowski">Что с&nbsp;качеством,<br>Лебовски?</h2>
+  <style>
+    #lebowski {
+      color: white;
 
-    <section class="slide">
-      <h2>Код для компьютера</h2>
-      <ul>
-        <li>умеют писать все</li>
-        <li class="next">порог входа в профессию</li>
-        <li class="next">javascript прощает всё</li>
-        <li class="next">не баг, а фича</li>
-        <!-- <li class="next"><mark>что с качеством?</mark></li> -->
-      </ul>
-    </section>
+      font-size: 80px;
+      top: 150px;
+      left: -30px;
+      transform: rotate(10deg);
+      word-spacing: .5rem;
+      text-align: right;
+    }
+  </style>
+</section>
 
-    <section class="slide clear">
-      <img class="place top" src="pictures/lebowski.jpeg" alt="" />
-    </section>
+<section class="slide">
+<h2>Качество продукта</h2>
+<ul>
+<li>мало багов</li>
+<li class="next">стабильная функциональность</li>
+<li class="next">отзывчивость</li>
+<li class="next"><mark>удобство и&nbsp;надёжность</mark></li>
+</ul>
+</section>
 
-    <section class="slide">
-      <h2>Качество продукта</h2>
-      <ul>
-        <li>мало багов</li>
-        <li class="next">стабильная функциональность</li>
-        <li class="next">отзывчивость</li>
-        <li class="next"><mark>удобство и надёжность</mark></li>
-      </ul>
-    </section>
+<section class="slide">
+<h2 class="shout shrink" style="font-size: 80px;">код = параллельный продукт</h2>
+</section>
 
-    <section class="slide">
-      <h2 class="shout shrink" style="font-size: 80px;">код = параллельный продукт</h2>
-    </section>
+<section class="slide">
+  <h2>Качественный код-продукт</h2>
+  <ul>
+    <li>удовольствие от&nbsp;использования</li>
+    <li>рекомендации друзьям</li>
+    <li>лояльность потребителей</li>
+    <li class="next">хорошая зарплата</li>
+    <li class="next">техническое развитие</li>
+  </ul>
+</section>
 
-    <!-- <section class="slide">
-      <h2>Код = параллельный продукт</h2>
-      <ul>
-        <li>потребители - разработчики</li>
-        <li class="next">кодовая база - гипертекст</li>
-        <li class="next">фреймворк - интерфейс</li>
-        <li class="next">используем собственные инструменты</li>
-        <li class="next">ежедневный опыт работы с кодом</li>
-        <li class="next">читаем, обдумаваем, пишем</li>
-      </ul>
-    </section> -->
+<section class="slide">
+  <h2>Писать код для людей</h2>
+  <ul>
+    <li>заботиться о&nbsp;людях</li>
+    <li class="next"><mark>удобство</mark> чтения</li>
+    <li class="next"><mark>простота</mark> мышления</li>
+    <li class="next"><mark>надёжность</mark> изменений</li>
+  </ul>
+</section>
 
-    <!-- <section class="slide">
-      <h2>Качественный продукт</h2>
-      <ul>
-        <li>удовольствие от использования</li>
-        <li class="next">рекомендации друзьям</li>
-        <li class="next">лояльность потребителей</li>
-      </ul>
-    </section> -->
+<section class="slide">
+  <h2>Писать код для людей</h2>
+  <ul>
+    <li>заботиться о&nbsp;людях</li>
+    <li><mark>удобство</mark> чтения</li>
+    <li><mark>простота</mark> мышления</li>
+    <li><s>надёжность изменений</s>&nbsp;&mdash; в&nbsp;другой раз</span></li>
+  </ul>
+</section>
 
-    <section class="slide">
-      <h2>Качественный код-продукт</h2>
-      <ul>
-        <li>удовольствие от использования</li>
-        <li>рекомендации друзьям</li>
-        <li>лояльность потребителей</li>
-        <li class="next">хорошая зарплата</li>
-        <li class="next">техническое развитие</li>
-      </ul>
-    </section>
-
-    <section class="slide">
-      <h2>Писать код для людей</h2>
-      <ul>
-        <li>заботиться о людях</li>
-        <li class="next"><mark>удобство</mark> чтения</li>
-        <li class="next"><mark>простота</mark> мышления</li>
-        <li class="next"><mark>надёжность</mark> изменений</li>
-      </ul>
-    </section>
-
-    <section class="slide">
-      <h2>Писать код для людей</h2>
-      <ul>
-        <li>заботиться о людях</li>
-        <li><mark>удобство</mark> чтения</li>
-        <li><mark>простота</mark> мышления</li>
-        <li><s>надёжность изменений</s> - в другой раз</span></li>
-      </ul>
-    </section>
-
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <h2>Писать код для людей</h2>
       <ul>
         <li>заботиться о людях</li>
@@ -332,7 +391,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <h2>Удобство кода</h2>
       <ul>
         <li class="next">80% времени чтение</li>
@@ -345,7 +404,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       <p class="shout" style="font-size: 60px;">"для людей" = удобный для чтения и мышления другими людьми</p>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <h2>Удобно и просто - это как?</h2>
       <ul>
         <li class="next">прозрачность</li>
@@ -357,7 +416,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <h2>Как мы учились писать код?</h2>
       <ul>
         <li class="next">синтаксис и конструкции</li>
@@ -376,43 +435,43 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
-        <span class="blank">
-          <mark>?????</mark> ->
-        </span>
-        читаем -> пишем
-      </p>
-    </section>
+<section class="slide shout clear">
+  <p class="shout fira">
+    <span class="blank">
+      <mark>?????</mark> ->
+    </span>
+    читаем -> пишем
+  </p>
+</section>
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
-          <mark class="transparent">?????</mark> -> читаем -> пишем
-      </p>
-    </section>
+<section class="slide shout clear">
+  <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+    <mark class="transparent">?????</mark> -> читаем -> пишем
+  </p>
+</section>
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
-        <mark>видим</mark> -> читаем -> пишем
-      </p>
-    </section>
+<section class="slide shout clear">
+  <p class="shout fira" style="font-size: 60px; line-height: 150px;">
+    <mark>видим</mark> -> читаем -> пишем
+  </p>
+</section>
 
-    <section class="slide">
-      <h2 class="shout fira" style="font-size: 70px;">"Восприятие в шахматах", Саймон</h2>
-    </section>
+<section class="slide">
+  <p class="shout">&laquo;Восприятие в&nbsp;шахматах&raquo; Саймон</p>
+</section>
 
-    <section class="slide clear">
-      <img class="place center cover" src="pictures/position.png" alt="" />
-      <img class="place center cover next" src="pictures/blank.png" alt="" />
-      <img class="place center cover next" src="pictures/position.png" alt="" />
-    </section>
+<section class="slide clear">
+  <img class="place center cover" src="pictures/position.png" alt="" />
+  <img class="place center cover next" src="pictures/blank.png" alt="" />
+  <img class="place center cover next" src="pictures/position.png" alt="" />
+</section>
 
-    <section class="slide clear">
-      <img class="place center cover" width="1000px" src="pictures/chunk-by-chunk.png" alt="" />
-    </section>
+<section class="slide clear">
+  <img class="place center cover" width="1000px" src="pictures/chunk-by-chunk.png" alt="" />
+</section>
 
-    <!-- <section class="slide">
-      <h2>"Восприятие в шахматах", Саймон</h2>
+<!-- <section class="slide">
+      <h2>«Восприятие в шахматах», Саймон</h2>
       <ul>
         <li>изучение репрезентации</li>
         <li class="next">демонстрация позиции на 15 секунд</li>
@@ -421,8 +480,8 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <!-- <section class="slide">
-      <h2>"Восприятие в шахматах", Саймон</h2>
+<!-- <section class="slide">
+      <h2>«Восприятие в шахматах», Саймон</h2>
       <ul>
         <li>сравнение игроков разного уровня</li>
         <li class="next">изучение <mark>репрезентации</mark></li>
@@ -431,8 +490,8 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <!-- <section class="slide">
-      <h2>"Восприятие в шахматах", Саймон</h2>
+<!-- <section class="slide">
+      <h2>«Восприятие в шахматах», Саймон</h2>
       <ul>
         <li>все испытуемые объединяют фигуры в чанки</li>
         <li class="next">чанки - осмысленные наборы фигур</li>
@@ -442,11 +501,11 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <img class="place center cover" width="500" src="pictures/chunk.jpg" alt="" />
       <div class="spotlight next" id="chess-chunk-1"></div>
-      <div class="spotlight next" id="chess-chunk-2"></div>
-      <style>
+<div class="spotlight next" id="chess-chunk-2"></div>
+<style>
         #chess-chunk-1 {
           --spotlight-top: -45px;
           --spotlight-left: -140px;
@@ -462,77 +521,139 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
           z-index: 1;
         }
       </style>
-    </section> -->
+</section> -->
 
-    <section class="slide">
-      <h2>"Восприятие в шахматах", Саймон</h2>
-      <ul>
-        <li>все испытуемые объединяют фигуры в чанки</li>
-        <li class="next">новичок - <mark>10</mark> чанков</li>
-        <li class="next">продвинутый - <mark>1000</mark> чанков</li>
-        <li class="next">профи - около <mark>50 000</mark> по мат. модели</li>
-        <li class="next"><mark>новички и эксперты видят принципиально разные доски</mark></li>
-      </ul>
-    </section>
+<section class="slide">
+  <h2>&laquo;Восприятие в&nbsp;шахматах&raquo;</h2>
+    <ul>
+      <li>все испытуемые объединяют фигуры в&nbsp;чанки</li>
+      <li class="next">новичок&nbsp;&mdash; <mark>10</mark>&nbsp;чанков</li>
+      <li class="next">продвинутый&nbsp;&mdash; <mark>1000</mark> чанков</li>
+      <li class="next">профи&nbsp;&mdash; около <mark>50&nbsp;000</mark> по&nbsp;мат. модели</li>
+      <!-- <li class="next"><mark>новички и&nbsp;эксперты видят принципиально разные доски</mark></li> -->
+  </ul>
+</section>
 
-    <section class="slide clear">
-      <!-- <h2>"Восприятие в шахматах", Саймон</h2>
+<section class="slide shout clear">
+  <p class="shout">
+    новички и&nbsp;эксперты видят разные доски
+  </p>
+</section>
+
+<section class="slide clear">
+<!-- <h2>«Восприятие в шахматах», Саймон</h2>
       <ul>
         <li>мгновенная поверхностная оценка ситуации</li>
         <li class="next">новочки вспоминают расположение фигур</li>
         <li class="next">продвинутые объясняют, что происходит</li>
         <li class="next">профи - "мат в два хода чёрным"</li>
       </ul> -->
-      <img class="place center cover" src="pictures/chess-eye.png" alt="" />
-      <div class="circle" style="top: 300px; left: 220px; --radius: 200px"></div>
-      <div class="circle" style="top: 190px; left: 390px; --radius: 100px"></div>
-      <div class="circle" style="top: 90px; left: 290px; --radius: 100px"></div>
-      <div class="circle" style="top: 250px; left: 635px; width: 450px !important; height: 100px; transform: rotate(115deg);"></div>
-      <style>
+<img class="place center cover" src="pictures/chess-eye.png" alt="" />
+<div class="circle next" style="top: 300px; left: 220px; --radius: 200px"></div>
+<div class="circle next" style="top: 190px; left: 390px; --radius: 100px"></div>
+<div class="circle next" style="top: 90px; left: 290px; --radius: 100px"></div>
+<div class="circle next" style="top: 250px; left: 635px; width: 450px !important; height: 100px; transform: rotate(115deg);"></div>
+<style>
         .circle {
           z-index: 1;
           position: absolute;
           width: var(--radius, 50px);
           height: var(--radius, 50px);
           background-color:var(--color-yellow);
-          opacity: .7;
+          opacity: .8;
           border-radius: 50%;
           background-blend-mode: multiply;
           mix-blend-mode: multiply;
         }
       </style>
-    </section>
+</section>
 
-    <section class="slide">
-      <h2>Симультанное восприятие</h2>
-      <ul>
-        <li>правополушарное, творческое</li>
-        <li class="next">единомоментное восприятие информации </li>
-        <li class="next">мышление единицами смысла - образы, чанки, паттерны</li>
-        <li class="next">мгновенное, "просто знаю / чувствую", интуиция</li>
-        <li class="next">развивается через насмотренность</li>
-        <!-- <li class="next"><mark>способствовать симультанному восприятию = писать код для людей</mark></li> -->
-      </ul>
-    </section>
+<section class="slide">
+  <h2 class="shout shrink" style="font-size: 80px;">Симультанное восприятие</h2>
+  </section>
 
-    <section class="slide">
-      <h2>Анализ профессионального мышления</h2>
-      <ul>
-        <li>методика работает для разных проф. областей</li>
-        <li class="next">чанк - «единица организации» профессионального опыта</li>
-        <li class="next">рост количества чанков = рост экспетизы </li>
-      </ul>
-    </section>
+<section class="slide">
+  <h2>Симультанное восприятие</h2>
+  <ul>
+    <li>правополушарное, творческое</li>
+    <li class="next">мышление единицами смысла</li>
+    <li class="next">единомоментное восприятие информации </li>
+  </ul>
+</section>
 
-    <section id="blurred-code" class="slide">
-      <div class="code-blurred">
-      <pre><code class="no-highlight">
+<section class="slide clear">
+  <img class="cover" center center style="height: 100%; object-fit: cover;" src="pictures/God2-Sistine_Chapel.png" alt="" />
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/god-solid.jpg" alt="" style="height: 100%; object-fit: fill;" />
+  <h2 class="shout" id="god-solid">SOLID</h2>
+  <style>
+    #god-solid {
+      z-index: 1;
+      transform: rotate(-50deg);
+      top: 270px;
+      left: 10px;
+      font-size: 20px !important;
+    }
+  </style>
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/god-solid-2.jpg" alt="" style="height: 100%; object-fit: fill;" />
+  <h2 class="shout" id="god-solid">SOLID</h2>
+  <style>
+    #god-solid {
+      z-index: 1;
+      transform: rotate(-50deg);
+      top: 270px;
+      left: 0px;
+      font-size: 40px !important;
+    }
+  </style>
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/god-solid-3.jpg" alt="" style="height: 100%; object-fit: fill;" />
+  <h2 class="shout" id="god-solid">SOLID</h2>
+  <style>
+    #god-solid {
+      z-index: 1;
+      transform: rotate(-50deg);
+      top: 200px;
+      left: 0px;
+      font-size: 150px !important;
+      text-shadow: 0 0 20px white, 0 0 20px white, 0 0 20px white;
+    }
+  </style>
+</section>
+
+<section class="slide">
+  <h2>Симультанное восприятие</h2>
+  <ul>
+    <li class="next">&laquo;просто вижу / знаю&nbsp;/ чувствую&raquo;, интуиция</li>
+    <li class="next">развивается через насмотренность</li>
+  </ul>
+</section>
+
+<section class="slide">
+<h2>Профессиональное мышление</h2>
+<ul>
+<li>методика работает для разных проф. областей</li>
+<li class="next">чанк&nbsp;&mdash; &laquo;единица организации&raquo; профессионального опыта</li>
+<li class="next">рост количества чанков = рост экспетизы </li>
+</ul>
+</section>
+
+<section id="blurred-code" class="slide">
+<div class="code-blurred">
+<pre><code class="no-highlight">
 <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
   <mark>//...</mark>
 }
       </code></pre>
-      </div>
-        <style>
+</div>
+<style>
           #blurred-code code {
             font-size: 50px !important;
           }
@@ -540,27 +661,28 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             color: transparent !important;
           }
         </style>
-    </section>
+</section>
 
-    <section id="unblurred-code" class="slide">
-      <div class="code-blurred">
-      <pre><code class="no-highlight">
+<section id="unblurred-code" class="slide">
+<div class="code-blurred">
+<pre><code class="no-highlight">
 <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
   <mark>//...</mark>
 }
       </code></pre>
-      </div>
-        <style>
+</div>
+<style>
           #unblurred-code code {
             font-size: 50px !important;
           }
         </style>
-    </section>
+</section>
 
-    <section id="blurred-page" class="slide">
-      <div class="code-blurred">
-      <pre><code class="no-highlight">
+<section id="blurred-page" class="slide">
+<div class="code-blurred">
+<pre><code class="no-highlight">
         <mark class="important">function</mark>  <mark>doSomething</mark> {
+
             <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
               <mark>//...</mark>
             }
@@ -572,8 +694,8 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             <mark class="important">return "empty"</mark>
         }
       </code></pre>
-      </div>
-        <style>
+</div>
+<style>
           #blurred-page code {
             font-size: 20px !important;
           }
@@ -581,12 +703,13 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             color: transparent !important;
           }
         </style>
-    </section>
+</section>
 
-    <section id="unblurred-page" class="slide">
-      <div class="code-blurred">
-      <pre><code class="no-highlight">
+<section id="unblurred-page" class="slide">
+<div class="code-blurred">
+<pre><code class="no-highlight">
         <mark class="important">function</mark>  <mark>doSomething</mark> {
+
             <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
               <mark>//...</mark>
             }
@@ -598,74 +721,162 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             <mark class="important">return "empty"</mark>
         }
       </code></pre>
-      </div>
-        <style>
+</div>
+<style>
           #unblurred-page code {
             font-size: 20px !important;
           }
         </style>
-    </section>
+</section>
 
-    <section class="slide clear">
-      <img class="cover" src="pictures/the-matrix.jpeg" alt="" />
-    </section>
+<section class="slide clear">
+  <img class="cover" src="pictures/the-matrix.jpeg" alt="" />
+</section>
 
-    <section class="slide">
-      <h2>Чанки Саймона в разработке</h2>
-      <ul>
-        <li>подсветка синтаксиса</li>
-        <li class="next">форматирование</li>
-        <li class="next">ключевые слова</li>
-        <li class="next">расположение</li>
-        <li class="next"><mark><b>узнаваемые характерные блоки = чанки</b></mark></li>
-      </ul>
-    </section>
+<section class="slide">
+  <h2>Чанки Саймона в&nbsp;разработке</h2>
+  <ul>
+    <li>подсветка синтаксиса</li>
+    <li class="next">форматирование</li>
+    <li class="next">ключевые слова</li>
+    <li class="next">расположение</li>
+    <li class="next"><mark><b>узнаваемые характерные блоки = чанки</b></mark></li>
+  </ul>
+</section>
 
-    <section class="slide">
-      <h2>Как мы мешаем</h2>
-      <ul>
-        <li class="next">несколько функций в одном файле</li>
-        <li class="next">смешанное форматирование</li>
-        <li class="next">необычная цветовая схема</li>
-        <li class="next">хаотичное расположение</li>
-        <li class="next">писать код для людей = <mark>способствовать симультанному восприятию</mark></li>
-      </ul>
-    </section>
-<!--
-    <section class="slide">
-      <h2>Как мы мешаем симультанному восприятию</h2>
-      <ul>
-        <li>пример</li>
-      </ul>
-    </section> -->
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
-        видим -> <mark>читаем</mark> -> пишем
-      </p>
-    </section>
+<section class="slide shout clear">
+  <p class="shout">
+    Мы мешаем симультанному восприятию
+  </p>
+</section>
 
-    <section class="slide">
-      <h2>Суксессивное восприятие</h2>
-      <ul>
-        <li class="next">левополушарное, логическое</li>
-        <li class="next">медленное и последовательное</li>
-        <li class="next">анализ важной или новой информации</li>
-        <li class="next">алгоритмическая секция на собеседовании</li>
-      </ul>
-    </section>
+<!-- <section class="slide">
+  <h2>Как мы мешаем</h2>
+  <ul>
+    <li class="next">несколько функций в&nbsp;одном файле</li>
+    <li class="next">смешанное форматирование</li>
+    <li class="next">необычная цветовая схема</li>
+    <li class="next">хаотичное расположение</li>
+    <li class="next">писать код для людей = <mark>способствовать симультанному восприятию</mark></li>
+  </ul>
+</section> -->
 
-    <section class="slide">
-      <h2>Сложность кода</h2>
-      <ul>
-        <li>необходимая и непреднамеренная</li>
-        <li class="next">цикломатическая - ветвления</li>
-        <li class="next">когнитивная - прерывания</li>
-      </ul>
-    </section>
+<section class="slide">
+  <h2>Множественный экспорт</h2>
+</section>
 
-    <section class="slide" id="cyclomatic">
-      <pre><code class="no-highlight" style="font-size: 40px; line-height: 70px;"><mark class="important">function doSomething()</mark> {
+<section class="slide">
+  <h2>Смешанное форматирование</h2>
+</section>
+
+<section class="slide">
+  <h2>Необычная цветовая схема</h2>
+</section>
+
+<section class="slide">
+  <h2>Хаотичное расположение</h2>
+</section>
+
+<section class="slide shout clear">
+  <p class="shout">
+    способствовать симультанному восприятию
+  </p>
+</section>
+
+<section class="slide">
+<p class="shout fira" style="font-size: 60px; line-height: 150px;">
+видим -> <mark>читаем</mark> -> пишем
+</p>
+</section>
+
+<section class="slide">
+  <h2>Суксессивное восприятие</h2>
+  <ul>
+    <li class="next">левополушарное, логическое</li>
+    <li class="next">медленное и&nbsp;последовательное</li>
+    <li class="next">анализ важной или новой информации</li>
+  </ul>
+</section>
+
+<section class="slide clear">
+  <img class="cover" center center style="height: 100%; object-fit: cover;" src="pictures/God2-Sistine_Chapel.png" alt="" />
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/god-solid.jpg" alt="" style="height: 100%; object-fit: fill;" />
+  <h2 class="shout" id="god-solid">SOLID</h2>
+  <style>
+    #god-solid {
+      z-index: 1;
+      transform: rotate(-50deg);
+      top: 270px;
+      left: 10px;
+      font-size: 20px !important;
+    }
+  </style>
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/god-solid-2.jpg" alt="" style="height: 100%; object-fit: fill;" />
+  <h2 class="shout" id="god-solid">SOLID</h2>
+  <style>
+    #god-solid {
+      z-index: 1;
+      transform: rotate(-50deg);
+      top: 270px;
+      left: 0px;
+      font-size: 40px !important;
+    }
+  </style>
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/god-solid-3.jpg" alt="" style="height: 100%; object-fit: fill;" />
+  <h2 class="shout" id="god-solid">SOLID</h2>
+  <style>
+    #god-solid {
+      z-index: 1;
+      transform: rotate(-50deg);
+      top: 200px;
+      left: 0px;
+      font-size: 150px !important;
+      text-shadow: 0 0 20px white, 0 0 20px white, 0 0 20px white;
+    }
+  </style>
+</section>
+
+<section class="slide">
+  <h2>Суксессивное восприятие</h2>
+  <ul>
+    <li class="next">неприятно, сложно</li>
+    <li class="next">алгоритмическая секция на&nbsp;собеседовании</li>
+  </ul>
+</section>
+
+<!-- <section class="slide">
+<h2>Сложность кода</h2>
+<ul>
+<li>необходимая и&nbsp;непреднамеренная</li>
+<li class="next">цикломатическая&nbsp;&mdash; ветвления</li>
+<li class="next">когнитивная&nbsp;&mdash; прерывания</li>
+</ul>
+</section> -->
+
+<section class="slide">
+  <p class="shout" style="font-size: 50px !important;">
+    необходимая и&nbsp;непреднамеренная сложность
+  </p>
+</section>
+
+<section class="slide">
+  <p class="shout" style="font-size: 50px !important;">
+    цикломатическая&nbsp;&mdash; ветвления
+  </p>
+</section>
+
+<section class="slide" id="cyclomatic">
+<pre><code class="no-highlight" style="font-size: 40px; line-height: 70px;"><mark class="important">function doSomething()</mark> {
     <mark class="important">while</mark> {
       <mark class="important">if (...)</mark> {
         <mark class="important">for (...)</mark> {
@@ -673,19 +884,19 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             <mark class="important">break;</mark>
           }
       </code></pre>
-      <style>
+<style>
         #cyclomatic mark {
           color: transparent !important;
         }
       </style>
-    </section>
+</section>
 
-    <section class="slide clear">
-      <img class="place top" src="pictures/bezdna-ada-bottichelli.jpeg" alt="" />
-    </section>
+<section class="slide clear">
+<img class="place top" src="pictures/bezdna-ada-bottichelli.jpeg" alt="" />
+</section>
 
-    <section class="slide">
-      <pre><code style="font-size: 40px; line-height: 70px;">function doSomething() {
+<section class="slide">
+<pre><code style="font-size: 40px; line-height: 70px;">function doSomething() {
     while (...) {
       if (...) {
         for (...) {
@@ -693,38 +904,68 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             break;
           }
       </code></pre>
-    </section>
+</section>
 
+<section class="slide">
+  <p class="shout" style="font-size: 50px !important;">
+    когнитивная&nbsp;&mdash; прерывания
+  </p>
+</section>
 
+<section class="slide">
+<pre><code style="font-size: 30px; line-height: 45px;">function myMethod(): void {
+  try {
+    if (condition1) { // +1
+        for (int i = 0; i < 10; i++) { // +2
+            while (condition2) { … } // +3
+        }
+    }
+  } catch (err) { // +1
+       if (condition2) { … } // +2 (nesting=1)
+  }
+} // Cognitive Complexity = 9
+      </code></pre>
+</section>
 
-    <section class="slide">
-      <h2>Переусложнённый код</h2>
-      <ul>
-        <li>удержание разветвлённого контекста</li>
-        <li class="next">пустые затраты когнитивных ресурсов</li>
-        <li class="next">очень медленно</li>
-        <li class="next">наращивание костылей</li>
-      </ul>
-    </section>
+<section class="slide">
+<h2>Переусложнённый код</h2>
+<ul>
+<li>удержание разветвлённого контекста</li>
+<li class="next">пустые затраты когнитивных ресурсов</li>
+<li class="next">очень медленно</li>
+<li class="next">наращивание костылей</li>
+</ul>
+</section>
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 60px; line-height: 150px;">
-        видим -> читаем -> <mark>пишем</mark>
-      </p>
-    </section>
+<section class="slide shout clear">
+<p class="shout fira" style="font-size: 60px; line-height: 150px;">
+видим -> читаем -> <mark>пишем</mark>
+</p>
+</section>
 
-    <section class="slide">
-      <h2>Как писать код для людей?</h2>
-      <ul>
-        <li>главный принцип - <mark>считывать, а не вчитываться</mark></li>
-        <li class="next">наша задача перейти к левополушарному логическому мышлению как можно позже</li>
-        <li class="next">чанки - шаблонные решения</li>
-        <li class="next">не можете опознать чанк - есть хорошие новости</li>
-        <li class="next"><mark>дизайн-паттерны и принципы</mark></li>
-      </ul>
-    </section>
+<section class="slide clear">
+<p class="shout" style="font-size: 60px; line-height: 150px;">
+  Как писать код для людей?
+</p>
+</section>
 
-    <!-- <section class="slide">
+<section class="slide clear">
+<p class="shout shrink" style="font-size: 60px; line-height: 150px;">
+  <mark>считывать, а&nbsp;не&nbsp;вчитываться</mark>
+</p>
+</section>
+
+<section class="slide">
+  <h2>Как писать код для людей?</h2>
+  <ul>
+    <li><mark>считывать, а&nbsp;не&nbsp;вчитываться</mark></li>
+    <li class="next">логическое мышление как можно позже</li>
+    <li class="next">шаблонные задачи &mdash;  чанки</li>
+    <li class="next">не&nbsp;можете опознать чанк&nbsp;&mdash; есть хорошие новости</li>
+  </ul>
+</section>
+
+<!-- <section class="slide">
       <h2>Паттерны !== ООП</h2>
       <ul>
         <li>паттерн - устойчивый, шаблонный способ решения задачи</li>
@@ -735,22 +976,22 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <section class="slide clear">
-      <img class="place center" width="1100" style="object-fit: contain;" src="pictures/hangover.jpg" alt="" />
-      <p class="buzzword fira next" style="scale: 14; top: 130px; left: 135px;">FP</p>
-      <p class="buzzword fira next" style="scale: 7; top: 230px; left: 835px;">ООП</p>
-      <p class="buzzword fira next" style="scale: 10; top: 80px; left: 335px;">Rx</p>
-      <p class="buzzword fira next" style="scale: 8; top: 360px; left: 455px;">SINGLETON</p>
-      <p class="buzzword fira next" style="scale: 8; top: 240px; left: 305px;">DRY</p>
-      <p class="buzzword fira next" style="scale: 9; top: 420px; left: 135px;">KISS</p>
-      <p class="buzzword fira next" style="scale: 4; top: 300px; left: 55px;">GRASP</p>
-      <p class="buzzword fira next" style="scale: 6; top: 100px; left: 735px;">render props</p>
-      <p class="buzzword fira next" style="scale: 5; top: 500px; left: 55px;">LOL</p>
-      <p class="buzzword fira next" style="scale: 4; top: 500px; left: 300px;">KEK</p>
-      <p class="buzzword fira next" style="scale: 20; top: 350px; left: 850px;">DI</p></div>
-      <p class="buzzword fira next" style="scale: 15; top: 500px; left: 635px;">SOLID</p>
+<section class="slide clear">
+  <img class="place center" width="1100" style="object-fit: contain;" src="pictures/hangover.jpg" alt="" />
+  <p class="buzzword fira next" style="scale: 14; top: 130px; left: 135px;">FP</p>
+  <p class="buzzword fira next" style="scale: 7; top: 230px; left: 835px;">ООП</p>
+  <p class="buzzword fira next" style="scale: 10; top: 80px; left: 335px;">Rx</p>
+  <p class="buzzword fira next" style="scale: 8; top: 360px; left: 455px;">SINGLETON</p>
+  <p class="buzzword fira next" style="scale: 8; top: 240px; left: 305px;">DRY</p>
+  <p class="buzzword fira next" style="scale: 9; top: 420px; left: 135px;">KISS</p>
+  <p class="buzzword fira next" style="scale: 4; top: 300px; left: 55px;">GRASP</p>
+  <p class="buzzword fira next" style="scale: 6; top: 100px; left: 735px;">render props</p>
+  <p class="buzzword fira next" style="scale: 5; top: 500px; left: 55px;">LOL</p>
+  <p class="buzzword fira next" style="scale: 4; top: 500px; left: 300px;">KEK</p>
+  <p class="buzzword fira next" style="scale: 20; top: 350px; left: 850px;">DI</p></div>
+  <p class="buzzword fira next" style="scale: 15; top: 500px; left: 635px;">SOLID</p>
 
-      <style>
+<style>
         .buzzword {
           z-index: 1;
           position: absolute;
@@ -758,111 +999,206 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
           color: white;
           opacity: .9;
           text-shadow: 0 0 1px white, 0 0 1px white;
+          font-family: 'FiraCode-Bold';
         }
       </style>
-    </section>
+</section>
 
-    <section class="slide">
-      <h2 class="shout shrink" style="font-size: 100px;">Паттерны !== ООП</h2>
-    </section>
+<section class="slide shout clear">
+  <h2 class="shout shrink" style="font-size: 80px !important;">Паттерны !== ООП</h2>
+</section>
 
-    <section class="slide">
-      <h2>SOLID !== ООП</h2>
-      <ul>
-        <li>S - SRP - функция должна делать что-то одно</li>
-        <li class="next">I - принцип разделения интерфейсов - количество props должно быть ограничено только необходимыми</li>
-        <li class="next">
-          <a href="https://youtu.be/qmtXJwX5gyw"><mark>ASEPTIC - Иван Малюгин</mark></a>
-        </li>
-      </ul>
-    </section>
+<section class="slide">
+  <h2>SOLID !== ООП</h2>
+  <ul>
+    <li>S&nbsp;&mdash; функция должна делать что-то одно</li>
+    <li class="next">I&nbsp;&mdash; количество параметров должно быть ограничено</li>
+    <li class="next">
+    <a href="https://youtu.be/qmtXJwX5gyw"><mark>ASEPTIC&nbsp;&mdash; Иван Малюгин</mark></a>
+  </li>
+  </ul>
+</section>
 
-    <section class="slide clear">
-      <img class="cover" src="pictures/malugin.png" alt="" />
-    </section>
+<section class="slide clear">
+  <img class="cover" src="pictures/malugin.png" alt="" />
+  <img class="cover next" src="pictures/malugin-qr.png" alt="" />
+</section>
 
-    <!-- <section class="slide">
-      <h2>Принципы ООП<span class="fira">!==</span> ООП</h2>
-      <ul>
-        <li>полиморфизм<span class="next">взаимозаменяемость при соблюдении контракта</span></li>
-        <li class="next">инкапсуляция - скрытие внутреннего устройства</li>
-        <li class="next">наследование - про отделение общего от частного</li>
-      </ul>
-    </section> -->
+<section class="slide shout clear">
+  <h2 class="shout shrink" style="font-size: 70px !important;">Принципы ООП !== ООП</h2>
+</section>
 
-    <section class="slide">
-      <h2>Паттерны и шаблонные решения</h2>
-      <ul>
-        <li>когнитивно дёшевы</li>
-        <li class="next">распознаются симультанно</li>
-        <li class="next">быстро внедряются</li>
-        <li class="next">обеспечивают "молчаливую" коммуникация</li>
-      </ul>
-    </section>
+<section class="slide">
+  <h2>Принципы ООП !== ООП</h2>
+  <ul>
+    <li>полиморфизм<span class="next"> &mdash; взаимозаменяемость и интерфейсы</span></li>
+    <li class="next">инкапсуляция &mdash; скрытие внутреннего устройства</li>
+    <li class="next">наследование &mdash; про отделение общего от частного</li>
+  </ul>
+</section>
 
-    <section class="slide">
-      <p class="shout fira">dispatch</p>
-    </section>
+<section class="slide">
+  <h2>Паттерны и&nbsp;шаблонные решения</h2>
+  <ul>
+    <li>распознаются симультанно</li>
+    <li class="next">когнитивно дёшевы</li>
+    <li class="next">быстро внедряются</li>
+    <li class="next">обеспечивают &laquo;молчаливую&raquo; коммуникация</li>
+  </ul>
+</section>
 
-    <section class="slide">
-      <p class="shout fira">{children}</p>
-    </section>
+<section class="slide">
+  <p class="shout fira">dispatch()</p>
+</section>
 
-    <section class="slide">
-      <p class="shout fira">rxjs</p>
-    </section>
+<section class="slide">
+  <p class="shout fira">{children}</p>
+</section>
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 100px;">() => () => {}</p>
-    </section>
+<section class="slide">
+  <p class="shout fira">rxjs</p>
+</section>
 
-    <section class="slide">
-      <p class="shout fira" style="font-size: 100px;">(｡)(｡)</p>
-    </section>
+<section class="slide">
+  <p class="shout fira" style="font-size: 100px !important;">() => () => {}</p>
+</section>
 
-    <section class="slide blank">
-    </section>
+<section class="slide">
+  <p class="shout fira" style="font-size: 100px !important;">(｡)(｡)</p>
+</section>
 
-    <section class="slide">
-      <h2 class="shout shrink fira" style="font-size: 100px;">Внедрять паттерн <nobr>или ставить костыль?</nobr></h2>
-    </section>
+<section class="slide blank">
+</section>
 
-    <section class="slide">
-      <h2>Паттерны против ad hoc</h2>
-      <ul>
-        <li>код для людей - для каких людей?</li>
-        <li class="next">уровень абстрактности - компромисс с экспертизой команды</li>
-        <li class="next">зоопарк паттернов - всегда плохо</li>
-        <li class="next">паттерн решает задачу, а не порождает</li>
-      </ul>
-    </section>
+<section class="slide shout clear">
+  <h2 class="shout shrink" style="font-size: 80px;">Внедрять паттерн или ставить костыль?</h2>
+</section>
 
-    <section class="slide">
-      <h2>Инструменты и рекомендации</h2>
-      <ul>
-        <li>SonarQube</li>
-        <li class="next">ESlint</li>
-        <li class="next">Prettier</li>
-        <li class="next">насмотренность и чтение исходников</li>
-        <li class="next">теория дизайна и рефакторинг refactoring.guru/</li>
-      </ul>
-    </section>
+<section class="slide">
+<h2>Паттерны против ad&nbsp;hoc</h2>
+<ul>
+<li>код для людей&nbsp;&mdash; для каких людей?</li>
+<li class="next">уровень абстрактности&nbsp;&mdash; компромисс с&nbsp;экспертизой команды</li>
+<li class="next">зоопарк паттернов&nbsp;&mdash; всегда плохо</li>
+<li class="next">паттерн решает задачу, а&nbsp;не&nbsp;порождает</li>
+</ul>
+</section>
 
-    <section class="slide">
-      <h2>Лирическая минутка</h2>
-      <ul>
-        <li>программист учится всю жизнь</li>
-        <li class="next">количество опознаваемых чанков, шаблонов</li>
-        <li class="next">мозг эксперта распознаёт огромное количество образов</li>
-        <li class="next">эксперт действует интуитивно, на чутье, как чувствует</li>
-      </ul>
-    </section>
+<section class="slide shout clear">
+  <h2 class="shout" style="font-size: 80px;">Инструменты</h2>
+</section>
 
-    <section class="slide">
-      <h2 class="shout shrink fira" style="font-size: 100px;">программирование <nobr>стало чувством</nobr><br></h2>
-    </section>
+<section class="slide clear">
+  <h2 class="shout shrink" style="font-size: 80px;">Prettier</h2>
+</section>
 
-    <!-- <section class="slide">
+<section class="slide">
+  <h2>Prettier</h2>
+  <div class="procs-cons">
+    <ul>
+      <li class="no-bullet">👍</li>
+      <li class="next">единое форматирование</li>
+      <li class="next">работает из коробки</li>
+    </ul><ul>
+      <li class="no-bullet">👎</li>
+      <li class="next">не очень гибкий</li>
+      <li class="next">конфликтует в ESLint</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide clear">
+  <h2 class="shout shrink" style="font-size: 80px;">SonarQube</h2>
+</section>
+
+<section class="slide">
+  <h2>SonarQube</h2>
+  <div class="procs-cons">
+    <ul>
+      <li class="no-bullet">👍</li>
+      <li class="next">облачный</li>
+      <li class="next">подключаемый</li>
+      <li class="next">подробный</li>
+    </ul><ul>
+      <li class="no-bullet">👎</li>
+      <li class="next">платный</li>
+      <li class="next">инфраструктурный</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/ref-js.png" alt="" />
+</section>
+
+<section class="slide clear">
+  <h2 class="shout shrink" style="font-size: 80px;">ESLint</h2>
+</section>
+<section class="slide clear">
+  <h2 class="shout shrink" style="font-size: 80px;">ESLint</h2>
+</section>
+<section class="slide clear">
+  <h2 class="shout shrink" style="font-size: 80px;">ESLint</h2>
+</section>
+<section class="slide clear">
+  <h2 class="shout shrink" style="font-size: 80px;">ESLint</h2>
+</section>
+
+<section class="slide">
+  <h2>ESLint</h2>
+  <div class="procs-cons">
+    <ul>
+      <li class="no-bullet">👍</li>
+      <li class="next">форматтер</li>
+      <li class="next">оценка сложности</li>
+      <li class="next">кастомные правила</li>
+    </ul>
+    <ul>
+      <li class="no-bullet">👎</li>
+      <li class="next">сложный</li>
+      <li class="next">медленный</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide clear">
+  <h2 class="shout" style="font-size: 80px;">eslint-plugin-sonarjs</h2>
+</section>
+
+<section class="slide">
+<h2>Рекомендации</h2>
+<ul>
+<li class="next">насмотренность</li>
+<li class="next">изучение исходников</li>
+<li class="next">рефакторинг <a href="refactoring.guru">refactoring.guru</a></li>
+</ul>
+</section>
+
+<section class="slide">
+  <h2>Лирическая минутка</h2>
+  <ul>
+    <li>программист учится всю жизнь</li>
+    <li class="next">количество опознаваемых чанков, шаблонов</li>
+    <li class="next">мозг эксперта распознаёт огромное количество образов</li>
+    <li class="next">эксперт действует интуитивно, на&nbsp;чутье, как чувствует</li>
+  </ul>
+</section>
+
+<section class="slide blackout clear">
+  <h2 class="shout fira" style="font-size: 90px !important;">программирование</h2>
+</section>
+<section class="slide blackout clear">
+  <h2 class="shout fira" style="font-size: 90px !important;">стало</h2>
+</section>
+<section class="slide blackout clear">
+  <h2 class="shout fira" style="font-size: 90px !important;">чувством</h2>
+</section>
+
+<section class="slide blackout clear">
+  <h2 class="shout fira next" style="font-size: 90px !important;">💔</h2>
+</section>
+
+<!-- <section class="slide">
       <h2>Сегодня я многое понял</h2>
       <ul>
         <li>1</li>
@@ -900,15 +1236,15 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
         </style>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <p class="shout" style="font-size: 80px; line-height: 90px;">Мы не читаем код<br>Мы его пролистываем</p>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <h2>Скорочтение</h2>
     </section> -->
 
-    <!-- <section class="slide">
+<!-- <section class="slide">
       <h2>Суксессивное восприятие</h2>
       <ul>
         <li class="next">последовательное восприятие</li>
@@ -918,7 +1254,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       </ul>
     </section> -->
 
-    <!-- <section class="slide" id="text">
+<!-- <section class="slide" id="text">
       <p class="shout">Императивное и декларативное программирование</p>
       <style>
         #text .shout {
@@ -929,15 +1265,14 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 
 
 
-    <section class="slide clear" id="last-slide">
-      <h2>Голосуйте за мой доклад</h2>
-      <p>
-        Владимир Захаров<br />
-        ГК Иннотех<br />
-        @vzkhrv<br />
-      </p>
-      <img src="pictures/qr.jpg" alt="" />
-      <style>
+<section class="slide clear" id="last-slide">
+<h2>Голосуйте за&nbsp;мой доклад</h2>
+<p>
+  Владимир Захаров<br />
+  @vzkhrv<br />
+</p>
+<img src="pictures/qr.jpg" alt="" />
+<style>
         #last-slide {
           background: url("pictures/fc23-title-2.png") no-repeat center center;
           background-size: contain;
@@ -957,13 +1292,13 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
           width: 400px;
         }
       </style>
-    </section>
+</section>
 
-    <div class="progress"></div>
+<div class="progress"></div>
 
-    <script src="node_modules/@shower/core/dist/shower.js"></script>
-    <script src="highlight.min.js"></script>
-    <!-- <script src="prism.js"></script> -->
-    <script>hljs.initHighlightingOnLoad();</script>
-  </body>
+<script src="node_modules/@shower/core/dist/shower.js"></script>
+<script src="highlight.min.js"></script>
+<!-- <script src="prism.js"></script> -->
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
 </html>
