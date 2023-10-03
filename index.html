@@ -90,7 +90,7 @@
         background-image: none;
       }
 
-      .slide.blackout {
+      .slide.blackout, .blackout {
         background-color: black;
         background-image: none;
       }
@@ -323,14 +323,14 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 </section>
 
 <section class="slide clear">
-  <img class="place top" src="pictures/lebowski.jpeg" alt="" />
-  <h2 class="shout" id="lebowski">Что с&nbsp;качеством,<br>Лебовски?</h2>
+  <img class="place" style="width: 100%;" src="pictures/wtf.jpeg" alt="" />
+  <h2 class="shout" id="lebowski">Что ты такое?</h2>
   <style>
     #lebowski {
       color: white;
 
       font-size: 80px;
-      top: 150px;
+      top: 350px;
       left: -50px;
       transform: rotate(10deg);
       word-spacing: .5rem;
@@ -390,7 +390,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
     <li>заботиться о&nbsp;людях</li>
     <li><mark>удобство</mark> чтения</li>
     <li><mark>простота</mark> мышления</li>
-    <li><s>надёжность изменений</s>&nbsp;&mdash; в&nbsp;другой раз</span></li>
+    <li><s><mark>надёжность</mark> изменений</s>&nbsp;&mdash; в&nbsp;другой раз</span></li>
   </ul>
 </section>
 
@@ -470,7 +470,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 </section>
 
 <section class="slide">
-  <p class="shout">&laquo;Восприятие в&nbsp;шахматах&raquo; Саймон</p>
+  <p class="shout">&laquo;Восприятие в&nbsp;шахматах&raquo;<br>Герберт Саймон</p>
 </section>
 
 <section class="slide clear">
@@ -542,7 +542,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       <li>все испытуемые объединяют фигуры в&nbsp;чанки</li>
       <li class="next">новичок&nbsp;&mdash; <mark>10</mark>&nbsp;чанков</li>
       <li class="next">продвинутый&nbsp;&mdash; <mark>1000</mark> чанков</li>
-      <li class="next">профи&nbsp;&mdash; около <mark>50&nbsp;000</mark> по&nbsp;мат. модели</li>
+      <li class="next">профи&nbsp;&mdash; около <mark>50&nbsp;000</mark> по&nbsp;математической модели</li>
       <!-- <li class="next"><mark>новички и&nbsp;эксперты видят принципиально разные доски</mark></li> -->
   </ul>
 </section>
@@ -733,19 +733,27 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 </section> -->
 
 <section class="slide">
-  <h2>Множественный экспорт</h2>
+  <h2>Множественный<br>экспорт</h2>
+  <img class="cover codeshot" height="100%" src="pictures/multiple-export.jpg" alt="">
+  <style>
+    .codeshot {
+      z-index: -1;
+      width: 50% !important;
+      transform: translate(-2%, -50%) !important;
+      height: 100% !important;
+      object-fit: contain !important;
+    }
+  </style>
 </section>
 
 <section class="slide">
-  <h2>Смешанное форматирование</h2>
+  <h2>Смешанное<br>форматирование</h2>
+  <img class="cover codeshot" height="100%" src="pictures/formatting.jpg" alt="">
 </section>
 
 <section class="slide">
-  <h2>Необычная цветовая схема</h2>
-</section>
-
-<section class="slide">
-  <h2>Хаотичное расположение</h2>
+  <h2>Необычная<br>цветовая<br>схема</h2>
+  <img class="cover codeshot" height="100%" src="pictures/wrong-color-1.jpg" alt="">
 </section>
 
 <section class="slide clear">
@@ -759,7 +767,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
   </p>
 </section>
 
-<section class="slide">
+<section class="slide clear">
 <p class="shout fira" style="font-size: 60px; line-height: 150px;">
 видим -> <mark>читаем</mark> -> пишем
 </p>
@@ -780,23 +788,23 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 
 <section class="slide clear">
   <img class="cover" src="pictures/god-solid.jpg" alt="" style="height: 100%; object-fit: fill;" />
-  <h2 class="shout" id="god-solid">SOLID</h2>
+  <h2 class="shout" id="god-solid-1">SOLID</h2>
   <style>
-    #god-solid {
+    #god-solid-1 {
       z-index: 1;
       transform: rotate(-50deg);
       top: 270px;
       left: 10px;
-      font-size: 20px !important;
+      font-size: 10px !important;
     }
   </style>
 </section>
 
 <section class="slide clear">
   <img class="cover" src="pictures/god-solid-2.jpg" alt="" style="height: 100%; object-fit: fill;" />
-  <h2 class="shout" id="god-solid">SOLID</h2>
+  <h2 class="shout" id="god-solid-2">SOLID</h2>
   <style>
-    #god-solid {
+    #god-solid-2 {
       z-index: 1;
       transform: rotate(-50deg);
       top: 270px;
@@ -808,9 +816,9 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 
 <section class="slide clear">
   <img class="cover" src="pictures/god-solid-3.jpg" alt="" style="height: 100%; object-fit: fill;" />
-  <h2 class="shout" id="god-solid">SOLID</h2>
+  <h2 class="shout" id="god-solid-3">SOLID</h2>
   <style>
-    #god-solid {
+    #god-solid-3 {
       z-index: 1;
       transform: rotate(-50deg);
       top: 200px;
@@ -833,7 +841,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 <h2>Сложность кода</h2>
 <ul>
 <li>необходимая и&nbsp;непреднамеренная</li>
-<li class="next">цикломатическая&nbsp;&mdash; ветвления</li>
+<li class="next">цикломатическая</li>
 <li class="next">когнитивная&nbsp;&mdash; прерывания</li>
 </ul>
 </section> -->
@@ -853,15 +861,31 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
             <mark class="important">break;</mark>
           }
       </code></pre>
-<style>
-        #cyclomatic mark {
-          color: transparent !important;
-        }
-      </style>
+  <style>
+    #cyclomatic mark {
+      color: transparent !important;
+    }
+  </style>
 </section>
 
 <section class="slide clear">
 <img class="place top" src="pictures/bezdna-ada-bottichelli.jpeg" alt="" />
+</section>
+
+<section class="slide" id="cyclomatic">
+<pre><code class="no-highlight" style="font-size: 40px; line-height: 70px;"><mark class="important">function doSomething()</mark> {
+    <mark class="important">while</mark> {
+      <mark class="important">if (...)</mark> {
+        <mark class="important">for (...)</mark> {
+          <mark class="important">if (...)</mark> {
+            <mark class="important">break;</mark>
+          }
+      </code></pre>
+  <style>
+    #cyclomatic mark {
+      color: transparent !important;
+    }
+  </style>
 </section>
 
 <section class="slide">
@@ -877,7 +901,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 
 <section class="slide">
   <p class="shout" style="font-size: 50px !important;">
-    цикломатическая&nbsp;&mdash; ветвления
+    цикломатическая
   </p>
 </section>
 
@@ -986,17 +1010,17 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 <section class="slide">
   <h2>SOLID !== ООП</h2>
   <ul>
-    <li>S&nbsp;&mdash; функция должна делать что-то одно</li>
-    <li class="next">I&nbsp;&mdash; количество параметров должно быть ограничено</li>
+    <li><mark>S</mark>&nbsp;&mdash; функция должна делать что-то одно</li>
+    <li class="next"><mark>I</mark>&nbsp;&mdash; количество параметров должно быть ограничено</li>
     <li class="next">
-    <a href="https://youtu.be/qmtXJwX5gyw"><mark>ASEPTIC&nbsp;&mdash; Иван Малюгин</mark></a>
+    <mark>ASEPTIC</mark>&nbsp;&mdash; Иван Малюгин
   </li>
   </ul>
 </section>
 
 <section class="slide clear">
   <img class="cover" src="pictures/malugin.png" alt="" />
-  <img class="cover next" src="pictures/malugin-qr.png" alt="" />
+  <img class="cover next" style="transform: translate(25%, -50%);" src="pictures/malugin-qr.png" alt="" />
 </section>
 
 <section class="slide shout clear">
@@ -1006,9 +1030,9 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 <section class="slide">
   <h2>Принципы ООП !== ООП</h2>
   <ul>
-    <li>полиморфизм<span class="next"> &mdash; взаимозаменяемость и интерфейсы</span></li>
-    <li class="next">инкапсуляция &mdash; скрытие внутреннего устройства</li>
-    <li class="next">наследование &mdash; про отделение общего от частного</li>
+    <li><mark>полиморфизм</mark><span class="next"> &mdash; заменяемость и интерфейсы</span></li>
+    <li class="next"><mark>инкапсуляция</mark> &mdash; скрытие внутреннего устройства</li>
+    <li class="next"><mark>наследование</mark> &mdash; про отделение общего от частного</li>
   </ul>
 </section>
 
@@ -1018,7 +1042,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
     <li>распознаются симультанно</li>
     <li class="next">когнитивно дёшевы</li>
     <li class="next">быстро внедряются</li>
-    <li class="next">обеспечивают &laquo;молчаливую&raquo; коммуникация</li>
+    <li class="next">обеспечивают &laquo;молчаливую&raquo; коммуникацию</li>
   </ul>
 </section>
 
@@ -1039,24 +1063,26 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 </section>
 
 <section class="slide">
-  <p class="shout fira" style="font-size: 100px !important;">(｡)(｡)</p>
+  <p class="shout fira" style="font-size: 100px !important;">(╯°□°）╯︵ ┻</p>
 </section>
 
-<section class="slide blank">
-</section>
+<!-- <section class="slide shout clear">
+  <h2 class="shout shrink" style="font-size: 80px;">Внедрять паттерн<br>или ставить костыль?</h2>
+</section> -->
 
-<section class="slide shout clear">
-  <h2 class="shout shrink" style="font-size: 80px;">Внедрять паттерн или ставить костыль?</h2>
+<section class="slide clear">
+  <img class="cover" align="left" style="object-fit: cover; object-position: 0; height: 100%" src="pictures/mik-patch.jpeg" alt="" />
+  <h2 class="shout shrink" style="font-size: 70px !important; z-index: 1; color: white; font-family: 'TTTravels-Black' !important;">Внедрять паттерн<br>или ставить костыль?</h2>
 </section>
 
 <section class="slide">
-<h2>Паттерны против ad&nbsp;hoc</h2>
-<ul>
-<li>код для людей&nbsp;&mdash; для каких людей?</li>
-<li class="next">уровень абстрактности&nbsp;&mdash; компромисс с&nbsp;экспертизой команды</li>
-<li class="next">зоопарк паттернов&nbsp;&mdash; всегда плохо</li>
-<li class="next">паттерн решает задачу, а&nbsp;не&nbsp;порождает</li>
-</ul>
+  <h2>Паттерны против ad&nbsp;hoc</h2>
+  <ul>
+    <li><mark>код для людей</mark>&nbsp;&mdash; для каких людей?</li>
+    <li class="next"><mark>уровень абстрактности</mark>&nbsp;&mdash; компромисс с&nbsp; командой</li>
+    <li class="next"><mark>зоопарк паттернов</mark>&nbsp;&mdash; всегда плохо</li>
+    <li class="next">паттерн решает задачу, а&nbsp;не&nbsp;порождает</li>
+  </ul>
 </section>
 
 <section class="slide shout clear">
@@ -1075,7 +1101,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       <li class="next">единое форматирование</li>
       <li class="next">работает из коробки</li>
     </ul><ul>
-      <li class="no-bullet">👎</li>
+      <li class="no-bullet next">👎</li>
       <li class="next">не очень гибкий</li>
       <li class="next">конфликтует в ESLint</li>
     </ul>
@@ -1084,6 +1110,10 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 
 <section class="slide clear">
   <h2 class="shout shrink" style="font-size: 80px;">SonarQube</h2>
+</section>
+
+<section class="slide clear">
+  <img class="cover" src="pictures/ref-js.png" alt="" />
 </section>
 
 <section class="slide">
@@ -1095,15 +1125,11 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       <li class="next">подключаемый</li>
       <li class="next">подробный</li>
     </ul><ul>
-      <li class="no-bullet">👎</li>
+      <li class="no-bullet next">👎</li>
       <li class="next">платный</li>
       <li class="next">инфраструктурный</li>
     </ul>
   </div>
-</section>
-
-<section class="slide clear">
-  <img class="cover" src="pictures/ref-js.png" alt="" />
 </section>
 
 <section class="slide clear">
@@ -1129,7 +1155,7 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
       <li class="next">кастомные правила</li>
     </ul>
     <ul>
-      <li class="no-bullet">👎</li>
+      <li class="no-bullet next">👎</li>
       <li class="next">сложный</li>
       <li class="next">медленный</li>
     </ul>
@@ -1170,103 +1196,76 @@ export const List = ({ data, onDeleteFile, policies }: Props) => {
 </section>
 
 <section class="slide blackout clear">
-  <h2 class="shout fira next" style="font-size: 90px !important;">💔</h2>
 </section>
 
-<!-- <section class="slide">
-      <h2>Сегодня я многое понял</h2>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
-      <div class="cover side" style="margin-top: 150px; margin-left: 50px;">
-        <img width="350" id="personal-photo" class="" src="pictures/stan.png" alt="моя фотография">
-      </div>
-    </section> -->
+<section class="slide blackout clear">
+  <h2 class="shout fira" style="font-size: 90px !important;">💔</h2>
+</section>
 
-<!--
-    <section id="code-page" class="slide">
-      <div class="code-blurred">
-      <pre><code>
-        <mark class="important">function</mark>  <mark>doSomething</mark> {
-            <mark class="important">for</mark> ( <mark>let i = 0; i < 10; i++</mark> ) {
-              <mark>//...</mark>
-            }
-
-            <mark class="important">if</mark> ( <mark>list.length</mark> ) {
-              <mark class="important">return "full"</mark>
-            }
-
-            <mark class="important">return "empty"</mark>
-        }
-      </code></pre>
-      </div>
-        <style>
-          #code-page code {
-            font-size: 20px !important;
-          }
-        </style>
-    </section> -->
-
-<!-- <section class="slide">
-      <p class="shout" style="font-size: 80px; line-height: 90px;">Мы не читаем код<br>Мы его пролистываем</p>
-    </section> -->
-
-<!-- <section class="slide">
-      <h2>Скорочтение</h2>
-    </section> -->
-
-<!-- <section class="slide">
-      <h2>Суксессивное восприятие</h2>
-      <ul>
-        <li class="next">последовательное восприятие</li>
-        <li class="next">левополушарное, логическое</li>
-        <li class="next">анализ важной информации</li>
-        <li class="next">медленное</li>
-      </ul>
-    </section> -->
-
-<!-- <section class="slide" id="text">
-      <p class="shout">Императивное и декларативное программирование</p>
-      <style>
-        #text .shout {
-          font-size: 70px !important;
-        }
-      </style>
-    </section> -->
-
-
+<section class="slide blackout clear">
+</section>
 
 <section class="slide clear" id="last-slide">
-<h2>Голосуйте за&nbsp;мой доклад</h2>
-<p>
-  Владимир Захаров<br />
-  @vzkhrv<br />
-</p>
-<img src="pictures/qr.jpg" alt="" />
-<style>
-        #last-slide {
-          background: url("pictures/fc23-title-2.png") no-repeat center center;
-          background-size: contain;
-        }
-        #last-slide h2 {
-          font-size: 62px;
-          width: 450px;
-          margin-top: 40px;
-        }
-        #last-slide p {
-          line-height: initial;
-        }
-        #last-slide img {
-          position: absolute;
-          right: 40px;
-          top: 40px;
-          width: 400px;
-        }
-      </style>
+  <div id="final-blackout"></div>
+  <h2>Голосуйте за&nbsp;мой доклад</h2>
+  <p>
+    Владимир Захаров<br />
+    @vzkhrv<br />
+  </p>
+  <img src="pictures/qr.jpg" alt="" />
+  <style>
+    #final-blackout {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #000;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: block;
+      -webkit-animation: fadeIn 5s;
+      animation: fadeIn 5s;
+      animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes fadeOut {
+      0% { opacity: 1;}
+      99% { opacity: 0.01;width: 100%; height: 100%;}
+      100% { opacity: 0;width: 0; height: 0;}
+    }
+    @keyframes fadeOut {
+        0% { opacity: 1;}
+        99% { opacity: 0.01;width: 100%; height: 100%;}
+        100% { opacity: 0;width: 0; height: 0;}
+    }
+    @-webkit-keyframes fadeIn {
+      0% { opacity: 0;}
+      99% { opacity: 0.01;width: 100%; height: 100%;}
+      100% { opacity: 1;width: 100%; height: 100%;}
+    }
+    @keyframes fadeIn {
+        0% { opacity: 1;}
+        99% { opacity: 0.01;width: 100%; height: 100%;}
+        100% { opacity: 0;width: 0; height: 0;}
+    }
+    #last-slide {
+      background: url("pictures/fc23-title-2.png") no-repeat center center;
+      background-size: contain;
+    }
+    #last-slide h2 {
+      font-size: 62px;
+      width: 450px;
+      margin-top: 40px;
+    }
+    #last-slide p {
+      line-height: initial;
+    }
+    #last-slide img {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 400px;
+    }
+  </style>
 </section>
 
 <div class="progress"></div>
